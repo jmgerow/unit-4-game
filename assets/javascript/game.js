@@ -2,14 +2,15 @@
 
 var wins = 0;
 var losses = 0;
-var targetNumber = 0;
-var userNumber = 0;
-
-$("#targetNumber").text(targetNumber);
+var targetNumber = 5;
+var userNumber = 4;
 
 var numberOptions = [10, 5, 3, 7];
 
-for (var i = 0; i < numberOptions.length; i++) {
+$(document).ready(function() {
+
+ 
+  for (var i = 0; i < numberOptions.length; i++) {
 
     // For each iteration, we will create an imageCrystal
     var imageCrystal = $("<img>");
@@ -27,5 +28,18 @@ for (var i = 0; i < numberOptions.length; i++) {
 
     // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
     $("#crystals").append(imageCrystal);
-
   }
+
+
+
+
+
+document.getElementById("target-number").innerHTML = targetNumber;
+document.getElementById("user-number").innerHTML = userNumber;
+document.getElementById("wins").innerHTML = wins;
+document.getElementById("losses").innerHTML = losses;
+
+
+})
+
+
