@@ -11,7 +11,7 @@ $(document).ready(function() {
 
  // generates random value from 30 to 90 for targetNumber
 
-    targetNumber = Math.floor(Math.random() * 70) + 20;
+    targetNumber = Math.floor(Math.random() * 101) + 19;
 
  // for loops to generate crystal-image and assign random value to each crystal
   for (var i = 0; i < 1; i++) {
