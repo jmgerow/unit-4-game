@@ -1,0 +1,44 @@
+body {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 200;
+    
+  }
+
+#main-container {
+    max-width: 480px;
+    font-size: 16px;
+}
+
+#score-container {
+    max-width: 330px;
+}
+.crystal-image {
+    width: 100px;
+    height: 100px;
+  }
+
+.scoreboard {
+    float: left;
+    background-color: rgb(71, 197, 197);
+    padding: 10px;
+    margin: 10px;
+    width: 110px;
+    border-style: dashed;
+    text-align: center;
+}
+
+#wins {
+    background-color: rgb(76, 156, 76);
+} 
+
+#losses {
+    background-color: rgb(233, 94, 94);
+}
+
+
+#crystals {
+    clear: both;
+    margin-top: 50px;
+}

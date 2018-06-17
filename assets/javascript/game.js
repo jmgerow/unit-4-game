@@ -2,42 +2,110 @@
 
 var wins = 0;
 var losses = 0;
-var targetNumber = 5;
-var userNumber = 4;
+var targetNumber = 0;
+var score = 0;
 
-var numberOptions = [10, 5, 3, 7];
+
 
 $(document).ready(function() {
 
- 
-  for (var i = 0; i < numberOptions.length; i++) {
+ // generates random value from 30 to 90 for targetNumber
 
-    // For each iteration, we will create an imageCrystal
-    var imageCrystal = $("<img>");
+    targetNumber = Math.floor(Math.random() * 70) + 20;
 
-    // First each crystal will be given the class ".crystal-image".
-    // This will allow the CSS to take effect.
-    imageCrystal.addClass("crystal-image");
+ // for loops to generate crystal-image and assign random value to each crystal
+  for (var i = 0; i < 1; i++) {
 
-    // Each imageCrystal will be given a src link to the crystal image
-    imageCrystal.attr("src", "http://cdn.playbuzz.com/cdn/35910209-2844-45c0-b099-f4d82878d54f/00261fda-4062-4096-81fd-8cf96b9034e8.jpg");
+    var imageCrystalBlue = $("<img>");
 
-    // Each imageCrystal will be given a data attribute called data-crystalValue.
-    // This data attribute will be set equal to the array value.
-    imageCrystal.attr("data-crystalvalue", numberOptions[i]);
+    imageCrystalBlue.addClass("crystal-image");
 
-    // Lastly, each crystal image (with all it classes and attributes) will get added to the page.
-    $("#crystals").append(imageCrystal);
+    imageCrystalBlue.attr("src", "assets/images/blue.jpg");
+
+    imageCrystalBlue.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+
+    $("#crystals").append(imageCrystalBlue);
+  }
+  for (var i = 0; i < 1; i++) {
+
+    var imageCrystalGreen = $("<img>");
+
+    imageCrystalGreen.addClass("crystal-image");
+
+    imageCrystalGreen.attr("src", "assets/images/green.jpg");
+
+    imageCrystalGreen.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+
+    $("#crystals").append(imageCrystalGreen);
+  }
+  for (var i = 0; i < 1; i++) {
+
+    var imageCrystalPurple = $("<img>");
+
+    imageCrystalPurple.addClass("crystal-image");
+
+    imageCrystalPurple.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+
+    imageCrystalPurple.attr("src", "assets/images/purple.jpg");
+
+    $("#crystals").append(imageCrystalPurple);
+  }
+  for (var i = 0; i < 1; i++) {
+
+    var imageCrystalRed = $("<img>");
+
+    imageCrystalRed.addClass("crystal-image");
+
+    imageCrystalRed.attr("src", "assets/images/red.jpg");
+
+    imageCrystalRed.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+  
+    $("#crystals").append(imageCrystalRed);
   }
 
+  // assigns click value
+  $(".crystal-image").on("click", function() {
 
 
+    var crystalValue = ($(this).attr("data-crystalvalue"));
+    crystalValue = parseInt(crystalValue);
 
+    score += crystalValue;
 
-document.getElementById("target-number").innerHTML = targetNumber;
-document.getElementById("user-number").innerHTML = userNumber;
-document.getElementById("wins").innerHTML = wins;
-document.getElementById("losses").innerHTML = losses;
+  
+   // logic to determine win/loss and rest 
+    if (score === targetNumber) {
+      wins ++;
+      score = 0;
+      targetNumber = Math.floor(Math.random() * 70) + 20;
+      imageCrystalBlue.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+      imageCrystalGreen.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+      imageCrystalPurple.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+      imageCrystalRed.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+    }
+
+    else if (score >= targetNumber) {
+      losses ++;
+      score = 0;
+      targetNumber = Math.floor(Math.random() * 70) + 20;
+      imageCrystalBlue.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+      imageCrystalGreen.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+      imageCrystalPurple.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+      imageCrystalRed.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+    }
+    // writes to html
+    document.getElementById("target-number").innerHTML = ("Target = " + targetNumber);
+    document.getElementById("score").innerHTML = ("Total = " + score);
+    document.getElementById("wins").innerHTML = ("Wins = " + wins);
+    document.getElementById("losses").innerHTML = ("Losses = " + losses);
+    
+  });
+    // ensures elements are present at game start
+    document.getElementById("target-number").innerHTML = ("Target = " + targetNumber);
+    document.getElementById("score").innerHTML = ("Total = " + score);
+    document.getElementById("wins").innerHTML = ("Wins = " + wins);
+    document.getElementById("losses").innerHTML = ("Losses = " + losses);
+    
 
 
 })
