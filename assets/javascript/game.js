@@ -72,27 +72,29 @@ $(document).ready(function() {
 
     score += crystalValue;
 
+    var resetFunction = function() {
   
-   // logic to determine win/loss and rest 
-    if (score === targetNumber) {
-      wins ++;
-      score = 0;
       targetNumber = Math.floor(Math.random() * 70) + 20;
       imageCrystalBlue.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
       imageCrystalGreen.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
       imageCrystalPurple.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
       imageCrystalRed.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+};
+   // logic to determine win/loss and rest 
+    if (score === targetNumber) {
+      wins ++;
+      score = 0;
+      resetFunction();
     }
 
     else if (score >= targetNumber) {
       losses ++;
       score = 0;
-      targetNumber = Math.floor(Math.random() * 70) + 20;
-      imageCrystalBlue.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
-      imageCrystalGreen.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
-      imageCrystalPurple.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
-      imageCrystalRed.attr("data-crystalvalue", Math.floor(Math.random() * 11) + 1);
+      resetFunction();
     }
+
+    
+
     // writes to html
     document.getElementById("target-number").innerHTML = ("Target = " + targetNumber);
     document.getElementById("score").innerHTML = ("Total = " + score);
